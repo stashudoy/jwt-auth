@@ -1,13 +1,14 @@
 import { MongoClient } from "mongodb"
+import {WithId} from 'mongodb'
 
 
-
-export type UserDBType = {
-    login: string,
-    email: string,
-    passwordHash: string,
+export type UserDBType = WithId<{
+    
+    login: string
+    email: string
+    passwordHash: string
     passwordSalt: string
-}
+}>
 
 const uri = process.env.uri || "mongodb://localhost:27017"
 

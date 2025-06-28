@@ -13,7 +13,7 @@ export const usersService = {
        return usersReposytory.createUser(user)
    },
    
-    async checkCredentials(login: string, password: string) {
+    async checkCredentials(login: string, password: string):Promise<boolean> {
         const user = await usersReposytory.findByLogin(login)
         if(!user) return false
         const passwordHash = await this._generateHash(password, user.passwordSalt)
@@ -26,7 +26,24 @@ export const usersService = {
     async _generateHash(password: string, salt: string) {
         const hash = await bcrypt.hash(password, salt)
         return hash
+    },
+
+
+    async findUsers(): Promise<UserDBType[]> {
+        return usersReposytory.getAllUsers()
+    },
+
+    async findUserByLogin(login: string): Promise<UserDBType | null> {
+
+        return usersReposytory.findByLogin(login)
+    },
+
+    async findUserById(id: ObjectId): Promise<UserDBType | null> {
+
+        return usersReposytory.findUserById(id)
     }
+
+
 
 
 }

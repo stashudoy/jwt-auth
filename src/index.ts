@@ -9,8 +9,8 @@ app.use(express.json())  //TypeError: Cannot read properties of undefined (readi
 const PORT = process.env.port || 5000
 
 
-app.use('/registration', usersRouter)
-app.use('/login', authRouter)
+app.use('/', usersRouter)
+app.use('/', authRouter)
 
 
 app.get('/', (req: Request, res: Response)=> {

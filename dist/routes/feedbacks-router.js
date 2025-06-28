@@ -9,15 +9,15 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.usersRouter = void 0;
+exports.feedbacksRouter = void 0;
 const express_1 = require("express");
-const users_service_1 = require("../domain/users-service");
-exports.usersRouter = (0, express_1.Router)({});
-exports.usersRouter.post('/registration', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const newUser = yield users_service_1.usersService.createUser(req.body.login, req.body.email, req.body.password);
-    res.status(201).send(newUser);
-}));
-exports.usersRouter.get('/users', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const result = yield users_service_1.usersService.findUsers();
-    res.json(result);
+exports.feedbacksRouter = (0, express_1.Router)({});
+exports.feedbacksRouter
+    .post('/', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const newProduct = yield feedbacksService.sendFeedback(req.body.comment, req.user._id);
+    res.status(201).send(newProduct);
+}))
+    .get('/', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const users = yield feedbacksService.allFeedbacks();
+    res.send(users);
 }));

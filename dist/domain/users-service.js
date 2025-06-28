@@ -42,5 +42,20 @@ exports.usersService = {
             const hash = yield bcrypt_1.default.hash(password, salt);
             return hash;
         });
+    },
+    findUsers() {
+        return __awaiter(this, void 0, void 0, function* () {
+            return users_repositories_1.usersReposytory.getAllUsers();
+        });
+    },
+    findUserByLogin(login) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return users_repositories_1.usersReposytory.findByLogin(login);
+        });
+    },
+    findUserById(id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return users_repositories_1.usersReposytory.findUserById(id);
+        });
     }
 };

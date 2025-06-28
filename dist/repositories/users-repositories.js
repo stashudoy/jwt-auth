@@ -24,4 +24,17 @@ exports.usersReposytory = {
             return user;
         });
     },
+    getAllUsers() {
+        return __awaiter(this, void 0, void 0, function* () {
+            return db_1.usersCollection
+                .find()
+                .toArray();
+        });
+    },
+    findUserById(id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const user = yield db_1.usersCollection.findOne({ _id: id }); // findOne({$or: [{email: loginOrEmail}, {login: loginOrEmail},  ]})
+            return user;
+        });
+    },
 };

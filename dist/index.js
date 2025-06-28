@@ -19,8 +19,8 @@ const auth_router_1 = require("./routes/auth-router");
 const app = (0, express_1.default)();
 app.use(express_1.default.json()); //TypeError: Cannot read properties of undefined (reading 'login')
 const PORT = process.env.port || 5000;
-app.use('/registration', users_router_1.usersRouter);
-app.use('/login', auth_router_1.authRouter);
+app.use('/', users_router_1.usersRouter);
+app.use('/', auth_router_1.authRouter);
 app.get('/', (req, res) => {
     res.send("hello, tester!");
 });
